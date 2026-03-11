@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+		<title>Harmoni - Demo Page</title>
+		<link rel="shortcut icon" href="assets/images/favicon.png">
+
+		<!-- fraimwork - css include -->
+		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+
+		<!-- icon css include -->
+		<link rel="stylesheet" type="text/css" href="assets/css/fontawesome-all.css">
+
+		<style>
+
+			@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i|Roboto:400,400i,700,700i,900,900i');
+
+			body,p {font-family: 'Open Sans', sans-serif;}
+			button,a,
+			h1,h2,h3,h4,h5,h6 {font-family: 'Roboto', sans-serif;}
+
+			body {
+				font-size: 16px;
+				padding-top: 80px;
+			}
+			h1,h2,h3,h4,h5,h6 {
+				color: #151515;
+				line-height: 1.37;
+				text-transform: capitalize;
+			}
+			img {
+				height: auto;
+				max-width: 100%;
+			}
+			strong,span,small,i {
+				line-height: normal;
+				display: inline-block;
+			}
+			strong {font-weight: 900;}
+
+			.plus-effect {
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				opacity: 0;
+				position: absolute;
+				transition: all .3s ease-in-out;
+				background: linear-gradient(to bottom right, rgba(255, 62, 0, .8) , rgba(255, 190, 48, .8));
+			}
+			.plus-effect:before,
+			.plus-effect:after {
+				top: 50%;
+				left: 50%;
+				content: '';
+				border-radius: 6px;
+				position: absolute;
+				background: #ffffff;
+				transition: all .3s ease-in-out;
+				transform: translateX(-50%) translateY(-50%);
+			}
+			.plus-effect:before {
+				width: 4px;
+				height: 50px;
+			}
+			.plus-effect:after {
+				height: 4px;
+				width: 50px;
+			}
+
+			.sec-ptb-100 {padding: 100px 0px;}
+			.bg-yellow {background-color: #ffc107;}
+			.clr-yellow {color: #ffc107;}
+			.clr-white {color: #ffffff;}
+			.overlay-white {background-color: rgba(255,255,255,0.8);}
+			.overlay-black {background-color: rgba(21,21,21,0.8);}
+			.container {
+				margin: 0 auto;
+				max-width: 1200px;
+			}
+			::selection {
+				color: #151515;
+				background: #ffc107;
+			}
+
+			/* link button - start */
+			.custom-btn {
+				color: #ffffff;
+				font-size: 14px;
+				font-weight: 700;
+				padding: 15px 45px;
+				border-radius: 30px;
+				text-transform: uppercase;
+				background: linear-gradient(to bottom right, #ff3e00 , #ffbe30);
+			}
+			.custom-btn:hover {color: #ffffff;}
+			/* link button - end */
+
+
+			/* back to top - start */
+			.thetop {
+				top: 0;
+				left: 0;
+				right: 0;
+				position: absolute;
+			}
+			.backtotop {
+				right: 15px;
+				width: 40px;
+				bottom: 15px;
+				height: 60px;
+				z-index: 999;
+				position: fixed;
+				overflow: hidden;
+				border-radius: 3px;
+				box-shadow: 0px 0px 25px 1px rgba(0,0,0,0.2);
+			}
+			.backtotop .scroll {
+				z-index: 1;
+				width: 100%;
+				height: 100%;
+				color: #ffffff;
+				display: block;
+				font-size: 30px;
+				line-height: 60px;
+				text-align: center;
+				position: relative;
+			}
+			.backtotop .scroll:after,
+			.backtotop .scroll:before {
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: -1;
+				content: '';
+				position: absolute;
+				transition: all .3s ease-in-out;
+			}
+			.backtotop .scroll:before {background: linear-gradient(to bottom right, #ff3e00 , #ffbe30);}
+			.backtotop .scroll:after {
+				opacity: 0;
+				background: linear-gradient(to bottom right, #ffbe30 , #ff3e00);
+			}
+			.backtotop:hover .scroll:before {opacity: 0;}
+			.backtotop:hover .scroll:after {opacity: 1;}
+			/* back to top - end */
+
+
+			/* header-section - start */
+			.header-section {
+				top: 0;
+				left: 0;
+				right: 0;
+				height: 80px;
+				z-index: 999;
+				position: fixed;
+				padding: 30px 0px;
+				background: linear-gradient(to bottom right, #ff3e00 , #ffbe30);
+			}
+			.header-section .logo-area {
+				top: 0;
+				left: 0;
+				right: 0;
+				width: 200px;
+				height: auto;
+				margin: 0 auto;
+				position: absolute;
+				background-color: #151515;
+			}
+			.header-section .logo-area .brand-logo {
+				width: 100%;
+				height: 100%;
+				display: block;
+				padding: 25px 50px;
+			}
+			/* header-section - end */
+
+			/* page-title-section - start */
+			.page-title-section {
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center center;
+				background-image: url(assets/images/slider/slider-bg5.jpg);
+			}
+			.page-title-section .overlay-black {padding: 200px 0px;}
+			.page-title-section p {margin-bottom: 50px;}
+			/* page-title-section - end */
+
+			/* pages-section - start */
+			.preview-page {
+				margin-bottom: 30px;
+				box-shadow: 0 2px 20px 1px rgba(0,0,0,0.2);
+			}
+			.pages-section h2.title {margin-bottom: 50px;}
+			.preview-page:hover .plus-effect {opacity: 1;}
+			.preview-page .image-wrapper {
+				width: 100%;
+				height: 415px;
+				overflow: hidden;
+				position: relative;
+				border-bottom: 1px solid #f0f0f0;
+			}
+			.preview-page h2 {
+				margin: 0;
+				font-size: 18px;
+				font-weight: 700;
+				text-align: center;
+				padding: 15px 30px;
+				background-color: #ffffff;
+			}
+			/* pages-section - end */
+
+			/* features-section - start */
+			.features-section {background-color: #f9f9f9;}
+			.features-section h2.title {margin-bottom: 50px;}
+
+			.features-section .feature {
+				width: 100%;
+				height: auto;
+				padding: 30px;
+				min-height: 205px;
+				text-align: center;
+				border-radius: 3px;
+				margin-bottom: 30px;
+				background: #ffffff;
+			}
+			.features-section .feature span {
+				width: 80px;
+				height: 80px;
+				text-align: center;
+				margin: 0 auto 15px;
+			}
+			.features-section .feature h3 {
+				margin: 0px;
+				color: #151515;
+				font-size: 16px;
+			}
+			/* features-section - end */
+
+			/* footer-section - start */
+			.footer-section {
+				padding: 30px 0px;
+				text-align: center;
+				background-color: #151515;
+			}
+			.footer-section p {
+				margin: 0;
+				padding: 0;
+				color: #ffffff;
+			}
+			.footer-section a {color: #ffc107;}
+			/* footer-section - end */
+
+			@media screen and (max-width: 991px) {
+				.preview-page,
+				.features-section .feature {
+					max-width: 350px;
+					margin: 0 auto 30px;
+				}
+			}
+			
+		</style>
+
+	</head>
+
+
+	<body>
+
+
+
+
+		
+		<!-- backtotop - start -->
+		<div id="thetop" class="thetop"></div>
+		<div class='backtotop'>
+			<a href="#thetop" class='scroll'>
+				<i class="fas fa-angle-double-up"></i>
+			</a>
+		</div>
+		<!-- backtotop - end -->
+
+		<!-- preloader - start -->
+		<div id="preloader"></div>
+		<!-- preloader - end -->
+
+
+
+
+
+		<!-- header-section - start
+		================================================== -->
+		<header id="header-section" class="header-section z-depth-1 bg-yellow clearfix">
+
+			<!-- header-bottom - start -->
+			<div class="header-bottom">
+				<div class="container">
+
+					<div class="logo-area text-center">
+						<a href="index-1.html" class="brand-logo">
+							<img src="assets/images/2.site-logo.png" alt="Logo_not_found">
+						</a>
+					</div>
+
+				</div>
+			</div>
+			<!-- header-bottom - end -->
+
+		</header>
+		<!-- header-section - end
+		================================================== -->
+
+
+
+
+
+		<!-- page-title-section - start
+		================================================== -->
+		<section id="page-title-section" class="page-title-section text-center clearfix">
+			<div class="overlay-black">
+				<div class="container">
+					<div class="row justify-content-center">
+
+						<div class="col-md-8">
+							<h1 class="clr-yellow">
+								harmoni event managemant
+							</h1>
+							<p class="clr-white">
+								It is a html5 template. It created by Bootstrap 4 framework for the Professionals . Bootstrap exclusive features makes it unique and extremely useful for all professions . It is fully responsive and supported in to all Device & Browsers . Try It...
+							</p>
+
+							<div class="text-center">
+								<a href="https://themeforest.net/item/harmoni-event-management-html-template/21975440" target="blank" class="custom-btn">
+									buy now
+								</a>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- page-title-section - end
+		================================================== -->
+
+
+
+
+
+		<!-- pages-section - start
+		================================================== -->
+		<section id="pages-section" class="pages-section sec-ptb-100 clearfix">
+			<div class="container">
+
+				<h2 class="title text-center">
+					all pages
+				</h2>
+
+				<div class="row justify-content-md-center">
+
+					<!-- preview-page - start -->
+					<div class="col-lg-4 col-md-6 col-sm-12">
+						<div class="preview-page">
+							<div class="image-wrapper">
+								<img src="preview/1.home1.jpg" alt="home_page_image_not_found">
+								<a href="index-1.html" target="_blank" class="plus-effect"></a>
+							</div>
+							<h2>home page v.1</h2>
+						</div>
+					</div>
+					<!-- preview-page - end -->
+
+					<!-- preview-page - start -->
+					<div class="col-lg-4 col-md-6 col-sm-12">
+						<div class="preview-page">
+							<div class="image-wrapper">
+								<img src="preview/2.home2.jpg" alt="home_page_image_not_found">
+								<a href="index-2.html" target="_blank" class="plus-effect"></a>
+							</div>
+							<h2>home page v.2</h2>
+						</div>
+					</div>
+					<!-- preview-page - end -->
+
+					<!-- preview-page - start -->
+					<div class="col-lg-4 col-md-6 col-sm-12">
+						<div class="preview-page">
+							<div class="image-wrapper">
+								<img src="preview/3.home3.jpg" alt="home_page_image_not_found">
+								<a href="index-3.html" target="_blank" class="plus-effect"></a>
+							</div>
+							<h2>home page v.3</h2>
+						</div>
+					</div>
+					<!-- preview-page - end -->
+
+					<!-- preview-page - start -->
+					<div class="col-lg-4 col-md-6 col-sm-12">
+						<div class="preview-page">
+							<div class="image-wrapper">
+								<img src="preview/4.home4.jpg" alt="home_page_image_not_found">
+								<a href="index-4.html" target="_blank" class="plus-effect"></a>
+							</div>
+							<h2>home page v.4</h2>
+						</div>
+					</div>
+					<!-- preview-page - end -->
+
+
+
+					<!-- preview-page - start -->
+					<div class="col-lg-4 col-md-6 col-sm-12">
+						<div class="preview-page">
+							<div class="image-wrapper">
+								<img src="preview/8.about.jpg" alt="home_page_image_not_found">
+								<a href="about.html" target="_blank" class="plus-effect"></a>
+							</div>
+							<h2>about page</h2>
+						</div>
+					</div>
+					<!-- preview-page - end -->
+
+					<!-- preview-page - start -->
+					<div class="col-lg-4 col-md-6 col-sm-12">
+						<div class="preview-page">
+							<div class="image-wrapper">
+								<img src="preview/9.services.jpg" alt="home_page_image_not_found">
+								<a href="service.html" target="_blank" class="plus-effect"></a>
+							</div>
+							<h2>services page</h2>
+						</div>
+					</div>
+					<!-- preview-page - end -->
+
+					<!-- preview-page - start -->
+					<div class="col-lg-4 col-md-6 col-sm-12">
+						<div class="preview-page">
+							<div class="image-wrapper">
+								<img src="preview/10.gallery.jpg" alt="home_page_image_not_found">
+								<a href="gallery.html" target="_blank" class="plus-effect"></a>
+							</div>
+							<h2>gallery page</h2>
+						</div>
+					</div>
+					<!-- preview-page - end -->
+
+					<!-- preview-page - start -->
+					<div class="col-lg-4 col-md-6 col-sm-12">
+						<div class="preview-page">
+							<div class="image-wrapper">
+								<img src="preview/15.blogs.jpg" alt="home_page_image_not_found">
+								<a href="blog.html" target="_blank" class="plus-effect"></a>
+							</div>
+							<h2>blog page</h2>
+						</div>
+					</div>
+					<!-- preview-page - end -->
+
+					<!-- preview-page - start -->
+					<div class="col-lg-4 col-md-6 col-sm-12">
+						<div class="preview-page">
+							<div class="image-wrapper">
+								<img src="preview/16.blog-details.jpg" alt="home_page_image_not_found">
+								<a href="blog-details.html" target="_blank" class="plus-effect"></a>
+							</div>
+							<h2>blog details page</h2>
+						</div>
+					</div>
+					<!-- preview-page - end -->
+
+
+					<!-- preview-page - start -->
+					<div class="col-lg-4 col-md-6 col-sm-12">
+						<div class="preview-page">
+							<div class="image-wrapper">
+								<img src="preview/11.speakers.jpg" alt="home_page_image_not_found">
+								<a href="speaker.html" target="_blank" class="plus-effect"></a>
+							</div>
+							<h2>speaker page</h2>
+						</div>
+					</div>
+					<!-- preview-page - end -->
+
+					<!-- preview-page - start -->
+					<div class="col-lg-4 col-md-6 col-sm-12">
+						<div class="preview-page">
+							<div class="image-wrapper">
+								<img src="preview/6.event-list.jpg" alt="home_page_image_not_found">
+								<a href="event-1.html" target="_blank" class="plus-effect"></a>
+							</div>
+							<h2>event list page</h2>
+						</div>
+					</div>
+					<!-- preview-page - end -->
+
+					<!-- preview-page - start -->
+					<div class="col-lg-4 col-md-6 col-sm-12">
+						<div class="preview-page">
+							<div class="image-wrapper">
+								<img src="preview/7.event-grid.jpg" alt="home_page_image_not_found">
+								<a href="event-2.html" target="_blank" class="plus-effect"></a>
+							</div>
+							<h2>event grid page</h2>
+						</div>
+					</div>
+					<!-- preview-page - end -->
+
+					<!-- preview-page - start -->
+					<div class="col-lg-4 col-md-6 col-sm-12">
+						<div class="preview-page">
+							<div class="image-wrapper">
+								<img src="preview/5.event-detail.jpg" alt="home_page_image_not_found">
+								<a href="event-details.html" target="_blank" class="plus-effect"></a>
+							</div>
+							<h2>event detail page</h2>
+						</div>
+					</div>
+					<!-- preview-page - end -->
+
+
+					<!-- preview-page - start -->
+					<div class="col-lg-4 col-md-6 col-sm-12">
+						<div class="preview-page">
+							<div class="image-wrapper">
+								<img src="preview/12.faq.jpg" alt="home_page_image_not_found">
+								<a href="faq.html" target="_blank" class="plus-effect"></a>
+							</div>
+							<h2>faq page</h2>
+						</div>
+					</div>
+					<!-- preview-page - end -->
+
+					<!-- preview-page - start -->
+					<div class="col-lg-4 col-md-6 col-sm-12">
+						<div class="preview-page">
+							<div class="image-wrapper">
+								<img src="preview/13.booking.jpg" alt="home_page_image_not_found">
+								<a href="booking.html" target="_blank" class="plus-effect"></a>
+							</div>
+							<h2>booking page</h2>
+						</div>
+					</div>
+					<!-- preview-page - end -->
+
+					<!-- preview-page - start -->
+					<div class="col-lg-4 col-md-6 col-sm-12">
+						<div class="preview-page">
+							<div class="image-wrapper">
+								<img src="preview/14.contact.jpg" alt="home_page_image_not_found">
+								<a href="contact.html" target="_blank" class="plus-effect"></a>
+							</div>
+							<h2>contact page</h2>
+						</div>
+					</div>
+					<!-- preview-page - end -->
+
+					<!-- preview-page - start -->
+					<div class="col-lg-4 col-md-6 col-sm-12">
+						<div class="preview-page">
+							<div class="image-wrapper">
+								<img src="preview/17.404.jpg" alt="home_page_image_not_found">
+								<a href="404-error.html" target="_blank" class="plus-effect"></a>
+							</div>
+							<h2>404 error page</h2>
+						</div>
+					</div>
+					<!-- preview-page - end -->
+					
+				</div>
+			</div>
+		</section>
+		<!-- pages-section - end
+		================================================== -->
+
+
+
+
+
+
+		<!-- features-section - start
+		================================================== -->
+		<section id="features-section" class="features-section sec-ptb-100 clearfix">
+			<div class="container">
+
+				<h2 class="title text-center">
+					Template Features
+				</h2>
+
+				<div class="row justify-content-center">
+
+					<div class="col-lg-3">
+						<div class="feature z-depth-1">
+							<span>
+								<img src="preview/features/html5_css3.png" alt="image_not_found">
+							</span>
+							<h3>html5 & CSS3 template.</h3>
+						</div>
+					</div>
+
+					<div class="col-lg-3">
+						<div class="feature z-depth-1">
+							<span>
+								<img src="preview/features/bootstrap_logo.png" alt="image_not_found">
+							</span>
+							<h3>framework bootstrap 4</h3>
+						</div>
+					</div>
+
+					<div class="col-lg-3">
+						<div class="feature z-depth-1">
+							<span>
+								<img src="preview/features/sass.png" alt="image_not_found">
+							</span>
+							<h3>Build on Scss</h3>
+						</div>
+					</div>
+
+					<div class="col-lg-3">
+						<div class="feature z-depth-1">
+							<span>
+								<img src="preview/features/jquery_icon.png" alt="image_not_found">
+							</span>
+							<h3>jquery version 3.3.1</h3>
+						</div>
+					</div>
+
+					<div class="col-lg-3">
+						<div class="feature z-depth-1">
+							<span>
+								<img src="preview/features/w3_logo.png" alt="image_not_found">
+							</span>
+							<h3>W3School Validated.</h3>
+						</div>
+					</div>
+
+					<div class="col-lg-3">
+						<div class="feature z-depth-1">
+							<span>
+								<img src="preview/features/Responsive.png" alt="image_not_found">
+							</span>
+							<h3>100% responsive to all device.</h3>
+						</div>
+					</div>
+
+					<div class="col-lg-3">
+						<div class="feature z-depth-1">
+							<span>
+								<img src="preview/features/edit.png" alt="image_not_found">
+							</span>
+							<h3>Fully customizable and easy to use.</h3>
+						</div>
+					</div>
+
+					<div class="col-lg-3">
+						<div class="feature z-depth-1">
+							<span>
+								<img src="preview/features/code_icon.png" alt="image_not_found">
+							</span>
+							<h3>100% hand code and clear code quality.</h3>
+						</div>
+					</div>
+
+					<div class="col-lg-3">
+						<div class="feature z-depth-1">
+							<span>
+								<img src="preview/features/design.png" alt="image_not_found">
+							</span>
+							<h3>Modern Design Quality.</h3>
+						</div>
+					</div>
+
+					<div class="col-lg-3">
+						<div class="feature z-depth-1">
+							<span>
+								<img src="preview/features/browser.png" alt="image_not_found">
+							</span>
+							<h3>cross Browser.</h3>
+						</div>
+					</div>
+
+					<div class="col-lg-3">
+						<div class="feature z-depth-1">
+							<span>
+								<img src="preview/features/doc_icon.png" alt="image_not_found">
+							</span>
+							<h3>well documenation.</h3>
+						</div>
+					</div>
+
+					<div class="col-lg-3">
+						<div class="feature z-depth-1">
+							<span>
+								<img src="preview/features/google_fonts.png" alt="image_not_found">
+							</span>
+							<h3>Free google font used.</h3>
+						</div>
+					</div>
+
+					<div class="col-lg-3">
+						<div class="feature z-depth-1">
+							<span>
+								<img src="preview/features/slick.PNG" alt="image_not_found">
+							</span>
+							<h3>slick slider used.</h3>
+						</div>
+					</div>
+
+					<div class="col-lg-3">
+						<div class="feature z-depth-1">
+							<span>
+								<img src="preview/features/owl_logo.png" alt="image_not_found">
+							</span>
+							<h3>owl carousel 2 used.</h3>
+						</div>
+					</div>
+
+					<div class="col-lg-3">
+						<div class="feature z-depth-1">
+							<span>
+								<img src="preview/features/animate_css.png" alt="image_not_found">
+							</span>
+							<h3>animate.css used.</h3>
+						</div>
+					</div>
+
+					<div class="col-lg-3">
+						<div class="feature z-depth-1">
+							<span>
+								<img src="preview/features/font_awesome.png" alt="image_not_found">
+							</span>
+							<h3>font-awesome icons used.</h3>
+						</div>
+					</div>
+
+					<div class="col-lg-3">
+						<div class="feature z-depth-1">
+							<span>
+								<img src="preview/features/flaticon.png" alt="image_not_found">
+							</span>
+							<h3>Flaticon used.</h3>
+						</div>
+					</div>
+
+					<div class="col-lg-3">
+						<div class="feature z-depth-1">
+							<span>
+								<img src="preview/features/jarallax.png" alt="image_not_found">
+							</span>
+							<h3>jarallax used.</h3>
+						</div>
+					</div>
+
+					<div class="col-lg-3">
+						<div class="feature z-depth-1">
+							<span>
+								<img src="preview/features/google-map3.png" alt="image_not_found">
+							</span>
+							<h3>google map 3 used.</h3>
+						</div>
+					</div>
+
+					<div class="col-lg-3">
+						<div class="feature z-depth-1">
+							<span>
+								<img src="preview/features/geocoding_api.png" alt="image_not_found">
+							</span>
+							<h3>map api.</h3>
+						</div>
+					</div>
+					
+				</div>
+
+			</div>
+		</section>
+		<!-- features-section - end
+		================================================== -->
+
+
+
+
+
+		<!-- footer-section - start
+		================================================== -->
+		<footer id="footer-section" class="footer-section clearfix">
+			<div class="container">
+				<p class="copyright">
+					© All Right Reserved. Designed by <a href="#!" target="_blank"><u>Harmoni</u></a>
+				</p>
+			</div>
+		</footer>
+		<!-- footer-section - end
+		================================================== -->
+
+
+
+
+
+
+
+
+
+		<!-- mdb fraimwork - jquery include -->
+		<script src="assets/js/jquery-3.3.1.min.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
+
+
+		<script>
+			// back to top - start
+			  // --------------------------------------------------
+			  $(window).scroll(function() {
+			  	if ($(this).scrollTop() > 200) {
+			  		$('.backtotop:hidden').stop(true, true).fadeIn();
+			  	} else {
+			  		$('.backtotop').stop(true, true).fadeOut();
+			  	}
+			  });
+			  $(function() {
+			  	$(".scroll").click(function() {
+			  		$("html,body").animate({
+			  			scrollTop: $(".thetop").offset().top
+			  		}, "slow");
+			  		return false
+			  	})
+			  });
+			  // back to top - end
+			  // --------------------------------------------------
+
+			  // preloader - start
+			  // --------------------------------------------------
+			  $(window).on('load', function(){
+			  	$('#preloader').fadeOut('slow',function(){$(this).remove();});
+			  });
+			  // preloader - end
+			  // --------------------------------------------------
+		</script>
+
+
+
+
+
+	</body>
+</html>

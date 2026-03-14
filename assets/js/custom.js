@@ -295,12 +295,12 @@
       $(this).html(index);
     }
   });
-  // index-1 - main-carousel1 - end
+  // index-1 - home - end
   // --------------------------------------------------
 
-  // index-2 - main-carousel2 - start
+  // index-2 - home - start
   // --------------------------------------------------
-  $('#main-carousel2').slick({
+  $('#home').slick({
     speed: 500,
     fade: true,
     dots: false,
@@ -311,7 +311,7 @@
     cssEase: 'linear',
     autoplaySpeed: 2000,
   });
-  // index-2 - main-carousel2 - end
+  // index-2 - home - end
   // --------------------------------------------------
 
   // upcomming-event-carousel - main-slider - start
